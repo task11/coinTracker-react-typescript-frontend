@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -35,6 +35,23 @@ function Coin() {
   const [loading, setLoading] = useState(true);
   const { coinId } = useParams();
   const { state } = useLocation() as RouteState;
+  const [coin, setCoin] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const dataInfo = await (
+        await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)
+      ).json();
+      // setCoin(json);
+      const dataPrice = await (
+        await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)
+      ).json();
+
+      console.log(dataPrice);
+
+
+    })();
+  }, []);
 
   return (
     <Container>
