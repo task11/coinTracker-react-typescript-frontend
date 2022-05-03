@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, Route, Routes, useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
+import Chart from "./Chart";
+import Price from "./Price";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -170,6 +172,13 @@ function Coin() {
                 <span>{priceInfo?.max_supply}</span>
               </OverviewItem>
             </Overview>
+            <Link to={`/${coinId}/chart`}>Chart</Link>
+            <Link to={`/${coinId}/price`}>Price</Link>
+
+            <Routes>
+              <Route path="chart" element={<Chart />} />
+              <Route path="price" element={<Price />} />
+            </Routes>
           </>
       }
     </Container>
