@@ -56,6 +56,9 @@ const Img = styled.img`
   margin-right: 10px;
 `;
 
+
+
+
 interface CoinInterface {
   id: string,
   name: string,
